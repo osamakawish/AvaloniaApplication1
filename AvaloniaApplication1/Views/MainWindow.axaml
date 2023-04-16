@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="1*,2*,2*,1*">
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="1" Content="{Binding ButtonText}" Click="ButtonClick"
+                HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center" VerticalAlignment="Stretch"/>
+        <TextBlock Grid.Row="2" Name="TextBlock" Text="{Binding Counter}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="3">
+            <TextBox Name="Input" IsEnabled="False"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       IsVisible="{Binding !#Input.IsEnabled}">Sorry, no can do!</TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
